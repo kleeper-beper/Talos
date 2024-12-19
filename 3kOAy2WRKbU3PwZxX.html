@@ -1,0 +1,161 @@
+<html><head><base href="." /><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Daily Sobriety Inspiration</title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Cpath fill='%233498db' d='M50 5C25.2 5 5 25.2 5 50s20.2 45 45 45 45-20.2 45-45S74.8 5 50 5zm0 80c-19.3 0-35-15.7-35-35s15.7-35 35-35 35 15.7 35 35-15.7 35-35 35zm0-60c-13.8 0-25 11.2-25 25s11.2 25 25 25 25-11.2 25-25-11.2-25-25-25zm0 40c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.7 15-15 15z'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 100px 100px;
+}
+
+.container {
+    max-width: 800px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.quote-box {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px 0;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 20px 0;
+}
+
+button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.info-section {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <svg class="icon" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#3498db" opacity="0.2"/>
+            <path d="M50 20 C30 20 20 35 20 50 C20 65 30 80 50 80 C70 80 80 65 80 50 C80 35 70 20 50 20" stroke="#3498db" fill="none" stroke-width="2"/>
+            <circle cx="50" cy="50" r="5" fill="#3498db"/>
+        </svg>
+        
+        <h1>Daily Sobriety Inspiration</h1>
+        <p>Welcome to your daily source of strength and motivation. Each quote is carefully selected to inspire and support you on your journey to sobriety.</p>
+        
+        <div class="quote-box" id="quoteDisplay">
+            Click the button below to receive your inspiration for today.
+        </div>
+        
+        <button onclick="newQuote()" class="pulse">Get New Quote</button>
+        
+        <div class="info-section">
+            <h2>Why Daily Inspiration Matters</h2>
+            <p>Staying motivated in your sobriety journey is crucial. Reading positive, uplifting messages can:</p>
+            <ul>
+                <li>Strengthen your resolve during challenging moments</li>
+                <li>Remind you of your inner strength</li>
+                <li>Provide perspective and wisdom</li>
+                <li>Connect you with shared experiences</li>
+            </ul>
+        </div>
+    </div>
+
+<script>
+const quotes = [
+    "Recovery is not for people who need it. It's for people who want it.",
+    "You are stronger than you know. Your addiction is not your identity.",
+    "The journey of a thousand miles begins with a single step.",
+    "Your future is created by what you do today, not tomorrow.",
+    "Recovery didn't open the gates of heaven and let me in. Recovery opened the gates of hell and let me out.",
+    "Success is the sum of small efforts, repeated day in and day out.",
+    "The only person you are destined to become is the person you decide to be.",
+    "Rock bottom became the solid foundation on which I rebuilt my life.",
+    "Recovery is about progression, not perfection.",
+    "Every day is a new beginning. Take a deep breath and start again.",
+    "You can't go back and change the beginning, but you can start where you are and change the ending.",
+    "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+    "Your best days are ahead of you, not behind you.",
+    "Every moment is a fresh beginning.",
+    "Progress, not perfection, is what we should be asking of ourselves."
+];
+
+function newQuote() {
+    const quoteDisplay = document.getElementById('quoteDisplay');
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    
+    // Add fade effect
+    quoteDisplay.style.opacity = 0;
+    
+    setTimeout(() => {
+        quoteDisplay.textContent = quotes[randomIndex];
+        quoteDisplay.style.opacity = 1;
+    }, 300);
+}
+
+// Add smooth transition for quote changes
+document.getElementById('quoteDisplay').style.transition = 'opacity 0.3s ease';
+</script>
+</body></html>
